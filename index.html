@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#075e54" />
+    <meta name="description" content="Transcritor local de áudios WhatsApp" />
+    <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>WhatsApp Audio Transcriber V5</title>
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>🎙️ WhatsApp Audio Transcriber V5</h1>
+        <p>Transcrição local de áudio · Português brasileiro · De graça</p>
+      </header>
+
+      <section class="card">
+        <label for="file">Selecionar áudio do WhatsApp</label>
+        <input id="file" type="file" accept=".ogg,.opus,.mp3,.wav,.m4a,.mp4,audio/*" />
+        <audio id="player" controls></audio>
+        <p class="muted">
+          OGG/OPUS, MP3, WAV e M4A, conforme suporte do navegador. Nenhum áudio é enviado ao nosso
+          servidor.
+        </p>
+
+        <label for="model">Modelo de reconhecimento</label>
+        <select id="model">
+          <option value="Xenova/whisper-small" selected>Whisper Small — recomendado para maior precisão</option>
+          <option value="Xenova/whisper-base">Whisper Base — equilíbrio entre rapidez e precisão</option>
+          <option value="Xenova/whisper-tiny">Whisper Tiny — mais rápido</option>
+          <option value="onnx-community/whisper-large-v3-turbo">Whisper Large V3 Turbo — maior precisão</option>
+          <option value="onnx-community/whisper-large-v3-ONNX">Whisper Large V3 — maior precisão, pode ser bastante lento</option>
+        </select>
+        <p class="muted">
+          A transcrição está configurada para português. O modelo Small pode oferecer mais precisão,
+          mas exige mais memória e tempo. Os modelos Large exigem mais espaço para download e memória disponível;
+          se ocorrer falha, tente o Small, Base ou um áudio menor.
+        </p>
+
+        <div class="actions">
+          <button id="transcribe">Transcrever áudio</button>
+          <button class="secondary" id="install" hidden>Instalar aplicativo</button>
+        </div>
+        <div
+          id="progress"
+          class="progress"
+          role="progressbar"
+          aria-label="Progresso da transcrição"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span id="progress-fill" class="progress-fill"></span>
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite">
+          Pronto. Na primeira execução, o modelo será baixado pela internet.
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="recommended-models-title">
+        <h2 id="recommended-models-title">Modelos recomendados</h2>
+        <div class="table-scroll" tabindex="0" aria-label="Tabela de modelos recomendados">
+          <table class="model-table">
+            <thead>
+              <tr>
+                <th scope="col">Modelo</th>
+                <th scope="col">Precis&atilde;o esperada</th>
+                <th scope="col">Desempenho no Xeon</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Whisper Small</th>
+                <td>Boa</td>
+                <td>Mais r&aacute;pido</td>
+              </tr>
+              <tr>
+                <th scope="row">Whisper Medium</th>
+                <td>Alta</td>
+                <td>Intermedi&aacute;rio</td>
+              </tr>
+              <tr>
+                <th scope="row">Whisper Large V3 Turbo</th>
+                <td>Muito alta</td>
+                <td>Mais lento</td>
+              </tr>
+              <tr>
+                <th scope="row">Whisper Large V3</th>
+                <td>Muito alta</td>
+                <td>Pode ser bastante lento</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted model-note">
+          Large V3 Turbo e Large V3 est&atilde;o dispon&iacute;veis no seletor acima. Whisper Medium ainda n&atilde;o est&aacute; integrado.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Transcrição</h2>
+        <textarea
+          id="original"
+          placeholder="A transcrição revisada aparecerá aqui"
+          spellcheck="true"
+        ></textarea>
+        <p id="transcription-count" class="muted text-count" aria-live="polite">
+          0 palavras · 0 caracteres
+        </p>
+        <p class="muted">
+          A revisão automática ajusta espaços, maiúsculas e pontuação. Confira nomes, números e
+          palavras ouvindo o áudio.
+        </p>
+        <div class="actions">
+          <button class="secondary" data-clear="original">Limpar texto</button>
+          <button class="secondary" data-copy="original">Copiar</button>
+          <button class="secondary" data-save="original">Salvar TXT</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Privacidade e funcionamento</h2>
+        <p>
+         O primeiro uso precisa de internet para carregar a biblioteca e baixar o modelo; o funcionamento offline
+          posterior depende dos arquivos estarem em cache. Para instalar como PWA, clique no botão "Instalar aplicativo"
+         ou use o menu do navegador. Nenhum áudio é enviado ao nosso servidor.
+        </p>
+      </section>
+
+      <footer>WhatsApp Audio Transcriber V5 · Aplicativo local e gratuito · Desenvolvido por Isaias Costa e Silva</footer>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
