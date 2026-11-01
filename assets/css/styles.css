@@ -154,10 +154,20 @@ button:disabled {
 }
 
 .actions {
-  display: flex;
+  display: inline;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 14px;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.transcription-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.transcription-actions button {
+  white-space: nowrap;
 }
 
 .muted {
@@ -242,6 +252,20 @@ footer {
 @media (max-width: 680px) {
   .wrap {
     padding: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .transcription-actions {
+    gap: 6px;
+  }
+
+  .transcription-actions button {
+    flex: 0 1 auto;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 4px;
+    font-size: 0.78rem;
   }
 }
 

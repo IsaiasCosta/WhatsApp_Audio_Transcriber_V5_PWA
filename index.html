@@ -31,6 +31,7 @@
           <option value="Xenova/whisper-small" selected>Whisper Small — recomendado para maior precisão</option>
           <option value="Xenova/whisper-base">Whisper Base — equilíbrio entre rapidez e precisão</option>
           <option value="Xenova/whisper-tiny">Whisper Tiny — mais rápido</option>
+          <option value="Xenova/whisper-medium">Whisper Medium — alta precisão, exige mais memória</option>
           <option value="onnx-community/whisper-large-v3-turbo">Whisper Large V3 Turbo — maior precisão</option>
           <option value="onnx-community/whisper-large-v3-ONNX">Whisper Large V3 — maior precisão, pode ser bastante lento</option>
         </select>
@@ -60,6 +61,28 @@
         </div>
       </section>
 
+      <section class="card">
+        <h2>Transcrição</h2>
+        <textarea
+          id="original"
+          placeholder="A transcrição revisada aparecerá aqui"
+          spellcheck="true"
+        ></textarea>
+        <p id="transcription-count" class="muted text-count" aria-live="polite">
+          0 palavras · 0 caracteres
+        </p>
+        <p class="muted">
+          A revisão automática ajusta espaços, maiúsculas e pontuação. Confira nomes, números e
+          palavras ouvindo o áudio.
+        </p>
+        <div class="actions transcription-actions">
+          <button class="secondary" data-clear="original">Limpar texto</button>
+          <button class="secondary" data-copy="original">Copiar</button>
+          <button class="secondary" data-save="original">Salvar TXT</button>
+        </div>
+      </section>
+
+
       <section class="card" aria-labelledby="recommended-models-title">
         <h2 id="recommended-models-title">Modelos recomendados</h2>
         <div class="table-scroll" tabindex="0" aria-label="Tabela de modelos recomendados">
@@ -68,10 +91,20 @@
               <tr>
                 <th scope="col">Modelo</th>
                 <th scope="col">Precis&atilde;o esperada</th>
-                <th scope="col">Desempenho no Xeon</th>
+                <th scope="col">Desempenho conforme processador</th>
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <th scope="row">Whisper Tiny</th>
+                <td>B&aacute;sica</td>
+                <td>Mais leve e r&aacute;pido; boa op&ccedil;&atilde;o para celulares</td>
+              </tr>
+              <tr>
+                <th scope="row">Whisper Base</th>
+                <td>Razo&aacute;vel</td>
+                <td>Leve; equil&iacute;brio para celulares</td>
+              </tr>
               <tr>
                 <th scope="row">Whisper Small</th>
                 <td>Boa</td>
@@ -96,29 +129,9 @@
           </table>
         </div>
         <p class="muted model-note">
-          Large V3 Turbo e Large V3 est&atilde;o dispon&iacute;veis no seletor acima. Whisper Medium ainda n&atilde;o est&aacute; integrado.
+          Em celulares, comece pelo Tiny para usar menos mem&oacute;ria ou pelo Base para equilibrar rapidez e precis&atilde;o.
+          Small exige mais recursos; Medium e Large podem consumir muita mem&oacute;ria e demorar para baixar e transcrever.
         </p>
-      </section>
-
-      <section class="card">
-        <h2>Transcrição</h2>
-        <textarea
-          id="original"
-          placeholder="A transcrição revisada aparecerá aqui"
-          spellcheck="true"
-        ></textarea>
-        <p id="transcription-count" class="muted text-count" aria-live="polite">
-          0 palavras · 0 caracteres
-        </p>
-        <p class="muted">
-          A revisão automática ajusta espaços, maiúsculas e pontuação. Confira nomes, números e
-          palavras ouvindo o áudio.
-        </p>
-        <div class="actions">
-          <button class="secondary" data-clear="original">Limpar texto</button>
-          <button class="secondary" data-copy="original">Copiar</button>
-          <button class="secondary" data-save="original">Salvar TXT</button>
-        </div>
       </section>
 
       <section class="card">
