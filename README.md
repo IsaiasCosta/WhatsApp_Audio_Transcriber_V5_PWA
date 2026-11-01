@@ -9,7 +9,7 @@ O workflow em `.github/workflows/pages.yml` publica o site automaticamente após
 1. Envie os arquivos deste projeto para um repositório GitHub.
 2. No repositório, abra **Settings → Pages** e selecione **GitHub Actions** como fonte de publicação.
 3. Aguarde a conclusão do workflow **Publicar no GitHub Pages** na aba **Actions**.
-4. Acesse o endereço exibido no ambiente `github-pages` do workflow. Normalmente, ele segue o formato `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
+4. Acesse o endereço exibido no ambiente `github-pages` do workflow. Para este repositório, o endereço esperado é <https://isaiascosta.github.io/WhatsApp_Audio_Transcriber_V5_PWA/>.
 
 O repositório deve estar público para usar o GitHub Pages no plano gratuito. Como o site usa caminhos relativos, ele também funciona em um endereço de projeto com subcaminho.
 
